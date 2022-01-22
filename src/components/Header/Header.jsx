@@ -33,7 +33,7 @@ const Header = () => {
     const dispatch = useDispatch();
     const isAdmin = localStorage.getItem("isAdmin");
 
-    const [nav, setNav] = useState(window.innerWidth < 1200 ? false : true);
+    const [nav, setNav] = useState(window.innerWidth < 1279.9 ? false : true);
     const [navPosition, setNavPosition] = useState("static");
 
     // Event handlers
@@ -50,7 +50,7 @@ const Header = () => {
 
     const changeNavScreen = () => {
         const navScreen = window.innerWidth;
-        if(navScreen <= 1280){
+        if(navScreen <= 1279.9){
             setNav(false);
         } else {
             setNav(true);

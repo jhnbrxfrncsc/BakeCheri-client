@@ -33,7 +33,7 @@ const Header = () => {
     const dispatch = useDispatch();
     const isAdmin = localStorage.getItem("isAdmin");
 
-    const [nav, setNav] = useState(window.innerWidth < 1880 ? false : true);
+    const [nav, setNav] = useState(window.innerWidth < 1200 ? false : true);
     const [navPosition, setNavPosition] = useState("static");
 
     // Event handlers

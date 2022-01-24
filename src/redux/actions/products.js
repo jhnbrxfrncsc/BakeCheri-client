@@ -17,6 +17,7 @@ export const postProduct = (product, history) => async (dispatch) => {
         if(isSuccess){
             alert(message);
             history.push('/admin/products');
+            history.go(0)
         } else {
             alert(message)
             history.go(0)

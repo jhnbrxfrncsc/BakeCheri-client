@@ -42,7 +42,7 @@ const Menu = () => {
     
     useEffect(() => {
         let mounted = true;
-        if(mounted && data.length === 0) {
+        if(mounted && data?.length === 0) {
             fetchProducts(selector);
         }
         return () => {
@@ -51,10 +51,10 @@ const Menu = () => {
     }, [data.length, fetchProducts, selector]);
 
     const handleChange = (event, value) => {
-        setLoading(true);
+        setLoading(false);
         setPage(value);
         setTimeout(() => {
-            setLoading(false);
+            setLoading(true);
         }, 100);
     };
     

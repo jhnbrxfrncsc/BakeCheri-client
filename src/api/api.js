@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const prodUrl = "https://bakecheri-api.herokuapp.com/products";
-const userUrl = "https://bakecheri-api.herokuapp.com/users";
-const orderUrl = "https://bakecheri-api.herokuapp.com/orders";
+const prodUrl = "https://bakecheri-server.herokuapp.com/products";
+const userUrl = "https://bakecheri-server.herokuapp.com/users";
+const orderUrl = "https://bakecheri-server.herokuapp.com/orders";
 
 // products
 export const fetchProducts = () => axios.get(prodUrl);

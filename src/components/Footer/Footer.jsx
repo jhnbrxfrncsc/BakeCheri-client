@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <Box className={classes.root}>
             <Typography variant="h5" className={classes.font}>
-                ©2017 BakeCheri™ All rights reserved.
+                ©2022 BakeCheri™ All rights reserved.
             </Typography>
         </Box>
     )

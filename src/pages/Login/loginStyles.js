@@ -25,7 +25,7 @@ export default makeStyles(theme => ({
         
     },
     paper: {
-        height: "51vh",
+        minHeight: "50vh",
         padding: 30,
         width: "40%" ,
         backgroundColor: "#333",

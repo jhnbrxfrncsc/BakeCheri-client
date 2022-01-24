@@ -18,6 +18,7 @@ import { useParams, useHistory } from 'react-router-dom';
 
 
 const EditProduct = () => {
+    window.scrollTo({ top: 0 })
     const classes = useStyles();
     const history = useHistory();
     const dispatch = useDispatch();

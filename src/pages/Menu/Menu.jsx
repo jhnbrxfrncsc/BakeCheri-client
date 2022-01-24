@@ -21,6 +21,7 @@ import useStyle from './styles';
 
 
 const Menu = () => {
+    window.scrollTo({ top: 0 })
     const classes = useStyle();
 
     // Redux

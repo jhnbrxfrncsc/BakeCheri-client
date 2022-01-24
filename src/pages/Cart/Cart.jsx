@@ -28,6 +28,7 @@ import { newOrder } from '../../redux/actions/orders';
 import { useHistory, Link } from 'react-router-dom';
 
 const Cart = () => {
+    window.scrollTo({ top: 0 })
     const classes = useStyles();
     const dispatch = useDispatch();
     const history = useHistory();

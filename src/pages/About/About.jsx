@@ -4,6 +4,7 @@ import React from 'react';
 import Hero from '../../components/Hero/Hero';
 
 const About = () => {
+    window.scrollTo({ top: 0 })
     return (
         <div>
             <Hero heroImg="/img/customCake-4.jpg" title="About Us"/>

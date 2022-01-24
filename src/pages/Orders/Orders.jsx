@@ -24,6 +24,7 @@ import { getUserOrders } from '../../redux/actions/orders';
 
 
 const Orders = () => {
+    window.scrollTo({ top: 0 })
     const classes = useStyles();
     const dispatch = useDispatch();
     const selector = useSelector(state => state.orders[0]);

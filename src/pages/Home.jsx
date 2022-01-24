@@ -10,6 +10,7 @@ import Contact from '../components/Contact/Contact';
 
 
 const Home = () => {
+    window.scrollTo({ top: 0 })
     return (
         <>
             <Hero heroImg="/img/headerBcg.jpeg"/>

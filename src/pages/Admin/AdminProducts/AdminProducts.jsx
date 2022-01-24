@@ -26,6 +26,7 @@ import Filter from '../../../components/Filter/Filter';
 import { Link } from 'react-router-dom';
 
 const AdminProducts = () => {
+    window.scrollTo({ top: 0 })
     const classes = useStyle();
 
     // Redux

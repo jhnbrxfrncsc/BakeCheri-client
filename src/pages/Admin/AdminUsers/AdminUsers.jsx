@@ -31,6 +31,7 @@ import { AiFillDelete } from 'react-icons/ai';
 import { useHistory } from 'react-router-dom';
 
 const AdminUsers = () => {
+    window.scrollTo({ top: 0 })
     const classes = useStyles();
     const history = useHistory();
     const userId = localStorage.getItem("userId")

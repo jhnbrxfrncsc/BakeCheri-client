@@ -24,6 +24,7 @@ import { getOrders } from '../../../redux/actions/orders';
 import { useEffect } from 'react';
 
 const AdminOrders = () => {
+    window.scrollTo({ top: 0 })
     const classes = useStyles();
     const selector = useSelector(state => state.orders);
     const dispatch = useDispatch();

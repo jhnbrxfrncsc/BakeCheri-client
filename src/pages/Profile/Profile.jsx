@@ -11,6 +11,7 @@ import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 const Profile = () => {
+    window.scrollTo({ top: 0 })
     const classes = useStyles();
     return (
         <div>

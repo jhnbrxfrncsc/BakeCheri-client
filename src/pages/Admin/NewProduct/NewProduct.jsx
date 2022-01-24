@@ -19,6 +19,7 @@ import Form from './Form';
 import { useHistory } from 'react-router-dom'
 
 const NewProduct = () => {
+    window.scrollTo({ top: 0 })
     const classes = useStyles();
     const dispatch = useDispatch();
     const history = useHistory();

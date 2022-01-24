@@ -51,10 +51,10 @@ const Menu = () => {
     }, [data.length, fetchProducts, selector]);
 
     const handleChange = (event, value) => {
-        setLoading(false);
+        setLoading(true);
         setPage(value);
         setTimeout(() => {
-            setLoading(true);
+            setLoading(false);
         }, 100);
     };
     

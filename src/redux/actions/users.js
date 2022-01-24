@@ -22,7 +22,7 @@ export const getUser = (userId) => async (dispatch) => {
     }
 }
 
-export const userLogin = (userDetails, history) => async (dispatch) => {
+export const userLogin = (userDetails) => async (dispatch) => {
     try {
         const res = await api.loginUser(userDetails);
         const { data, isSuccess, token, message } = res.data;
@@ -30,20 +30,12 @@ export const userLogin = (userDetails, history) => async (dispatch) => {
             const userData = {
                 ...data, token
             }
-            // alert(message)
             localStorage.setItem("token", token);
             localStorage.setItem("userId", data._id);
             localStorage.setItem("email", data.email);
             localStorage.setItem("isAdmin", data.isAdmin);
             localStorage.setItem("message", message);
             localStorage.setItem("isSuccess", isSuccess);
-            // if(data.isAdmin){
-            //     history.push('/admin/profile')
-            //     history.go(0);
-            // } else {
-            //     history.push('/');
-            //     history.go(0);
-            // }
             dispatch({ type : "LOGIN_USER", payload: userData });
         } else if(!isSuccess) {
             localStorage.setItem("message", message);
@@ -120,11 +112,14 @@ export const addCartItem = (cartItem, history) => async (dispatch) => {
     try {
         const { data } = await api.cartItemAddition(cartItem);
         const { isSuccess, message } = data;
-        if(isSuccess){
+        if(isSuccess && cartItem.act){
             alert(message);
             history.go(0);
-        } else if(!isSuccess) {
+        } else if(!isSuccess && cartItem.act) {
             alert(message);
+        } else if(isSuccess) {
+            localStorage.setItem("message", message);
+            localStorage.setItem("isSuccess", isSuccess);
         }
         dispatch({ type : "ADD_CART_ITEM" });
     } catch (error) {

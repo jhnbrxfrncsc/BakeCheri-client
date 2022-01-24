@@ -15,7 +15,7 @@ export const useStyles = makeStyles(theme => ({
     },
     form: {
         backgroundColor: "#b29ddb",
-        height: "calc(100vh - 28vh)",
+        minHeight: "calc(100vh - 28vh)",
         width: "60vh",
         padding: "25px",
         fontFamily: "'Oswald', sans-serif",

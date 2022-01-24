@@ -19,11 +19,12 @@ import { useDispatch } from 'react-redux';
 import { putAvailability, removeProduct } from '../../../redux/actions/products';
 
 // router
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 
 const CardItem = ({ id, name, title, price, image, loading, setLoading, isActive }) => {
     const classes = useStyle();
+    const history = useHistory();
     const dispatch = useDispatch();
 
     useEffect(()=> {
@@ -33,7 +34,7 @@ const CardItem = ({ id, name, title, price, image, loading, setLoading, isActive
     }, [setLoading]);
 
     const updateActive = (prodId) => {
-        dispatch(putAvailability(prodId));
+        dispatch(putAvailability(prodId, history));
     }
 
     return(

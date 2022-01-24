@@ -19,6 +19,7 @@ export const postProduct = (product, history) => async (dispatch) => {
             history.push('/admin/products');
         } else {
             alert(message)
+            history.go(0)
         }
         dispatch({ type : "CREATE_PRODUCT", payload: data });
     } catch (error) {
@@ -26,11 +27,12 @@ export const postProduct = (product, history) => async (dispatch) => {
     }
 }
 
-export const putAvailability = (prodId) => async (dispatch) => {
+export const putAvailability = (prodId, history) => async (dispatch) => {
     try {
         const res = await api.updateAvailability(prodId);
-        const { message } = res.data
+        const { message } = res.data;
         alert(message);
+        history.go(0);
         dispatch({ type : "PRODUCT_AVAILABILITY" });
     } catch (error) {
         console.log(error.message)    

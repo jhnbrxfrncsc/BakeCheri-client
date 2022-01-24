@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 // Formik
 import { Form as Forms } from 'formik';
 
+// sweet alert
+import Swal from 'sweetalert2';
+
 // Material UI
 import useStyles from './loginStyles';
 import {
@@ -10,10 +13,8 @@ import {
     Button,
     CircularProgress,
     Grid,
-    Snackbar,
     Typography
 } from '@material-ui/core';
-import { Alert } from '@material-ui/lab';
 
 // components
 import Textfield from '../../components/FormsUI/Textfield';
@@ -25,22 +26,32 @@ const Form = ({ handleSubmit }) => {
     const classes = useStyles();
     const history = useHistory();
 
-    const [open, setOpen] = useState(false);
-    const [alertMsg, setAlertMsg] = useState("");
     const [loading, setLoading] = useState(false);
 
     const message = localStorage.getItem("message");
     const isAdmin = localStorage.getItem("isAdmin");
     const isSuccess = localStorage.getItem("isSuccess");
 
-    const vertical = 'top';
-    const horizontal = 'center';
+
+    const Toast = Swal.mixin({
+        toast: true,
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
     
     useEffect(() => {
         if(isSuccess === "true"){
             setLoading(true);
-            setAlertMsg("Login Successful");
-            setOpen(true);
+            Toast.fire({
+                icon: 'success',
+                title: "Login Successful"
+            })
+            setLoading(false);
             setTimeout(() => {
                 if(isAdmin === "true"){
                     localStorage.removeItem("isSuccess")
@@ -53,22 +64,20 @@ const Form = ({ handleSubmit }) => {
                     history.push("/")
                     history.go(0)
                 }
-            }, 4000);
+            }, 3000);
         } else if(isSuccess === "false") {
             setLoading(true);
-            setAlertMsg(message);
-            setOpen(true);
-            setTimeout(() => {
-                setLoading(false);
-                setOpen(false);
-            }, 5000);
+            Toast.fire({
+                icon: 'error',
+                title: message
+            })
+            setLoading(false);
             localStorage.removeItem("isSuccess")
             localStorage.removeItem("message")
         } 
-    }, [history, isAdmin, isSuccess, message]);
+    }, [Toast, history, isAdmin, isSuccess, message]);
 
     const handleClose = () => {
-        setOpen(false);
         setLoading(false);
     };
     
@@ -153,24 +162,6 @@ const Form = ({ handleSubmit }) => {
                     className={classes.backdrop}    
                 >
                     <CircularProgress color="inherit" />
-                    <Snackbar
-                        anchorOrigin={{ vertical, horizontal }}
-                        open={open}
-                        onClose={handleClose}
-                        message={message}
-                    >
-                        <Alert
-                            elevation={8}
-                            severity={isSuccess === "true" ? "success" : "error"}
-                            onClose={handleClose}
-                            variant="filled"
-                            className={classes.alert}
-                        >
-                            <Typography className={classes.alertTitle}>
-                                {alertMsg}
-                            </Typography>
-                        </Alert>
-                    </Snackbar>
                 </Backdrop>
             </Grid>
         </Forms>

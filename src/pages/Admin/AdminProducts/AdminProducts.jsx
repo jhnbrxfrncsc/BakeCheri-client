@@ -39,16 +39,21 @@ const AdminProducts = () => {
     const [loading, setLoading] = useState(false);
     const noOfPages = Math.ceil(data.length / itemsPerPage);
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const fetchData = async() => {
+        dispatch(getProducts());
+        setData(selector);
+    }
+
     useEffect(() => {
         let mounted = true;
-        if(mounted && !data.length) {
-            dispatch(getProducts());
-            setData(selector)
+        if(mounted && !data?.length) {
+            fetchData();
         }
         return () => {
             mounted = false;
         }
-    }, [selector, dispatch, data.length]);
+    }, [data?.length, fetchData]);
 
     const handleChange = (event, value) => {
         setLoading(false);
@@ -116,9 +121,9 @@ const AdminProducts = () => {
                                         key={i + 1}
                                         item 
                                         xs={12} 
-                                        sm={12} 
-                                        md={4} 
-                                        lg={3} 
+                                        sm={8} 
+                                        md={6} 
+                                        lg={4} 
                                     >
                                         <CardItem 
                                             key={i+1}
@@ -130,6 +135,7 @@ const AdminProducts = () => {
                                             loading={loading}
                                             setLoading={setLoading}
                                             isActive={prod?.isActive}
+                                            fetchData={fetchData}
                                         />
                                     </Grid>
                                 )
